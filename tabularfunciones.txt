@@ -1,2 +1,75 @@
-#Display the output
-prit("New tabularfunciones.txt")
+#include <stdio.h>
+#include <math.h>
+
+double f1(double x){
+return 3*pow(x,2)+ 5*x-10; //usar pow para elevar potencias 
+	
+}
+
+double f2(double x) {
+return pow(sin(x),3) + cos(x);
+}
+
+double f3(double x){
+	return log(x);
+}
+
+ int menu(){
+ 	int opcion;
+ 	printf("\n1.f(X)=3x^2+5x-10");
+ 	printf("\n2.f(x)=sin3(x)+cos(x)");
+ 	printf("\n3.f(x)=ln(x)");
+ 	printf("\n4.Salir");
+ 	
+  do{
+ 	printf("\n\nOpcion: ");
+ 	scanf("%d", &opcion);
+	 }while(opcion<1 || opcion>4);
+ 	
+ 	return opcion;
+}
+
+int EscribeTabla(int opt){
+	double x,inicio,final,incremento;
+	double fx;
+	
+	printf("\nInicio: ");scanf("%lf", &inicio);
+	printf("\nFinal:  ");scanf("%lf", &final);
+	printf("\nIncremento: ");scanf("%lf", &incremento);
+	
+	printf("\n\t\tx\t\tf(x)\n");
+	printf("\t\t______\t\t______\n");
+	
+	for(x=inicio; x<=final; x=x+incremento)
+	{
+		switch(opt)
+		{
+			case 1:
+				fx=f1(x);break;
+		    case 2:
+		    	fx=f2(x);break;
+		    case 3:
+		    	fx=f3(x);break;
+		}
+		printf("\t\t%lf\t\t%lf\n", x, fx);
+	}
+	system("pause");
+}
+
+int main(){
+int opcion;
+do{
+	system("cls");
+	printf("\t\t\tTabulacion de funciones\n\n"); 
+	opcion=menu(); //usar if (opcion !=4){escribirtabla(opcion);} while(opcion!=4); 
+	if(opcion!=4)
+	{
+			EscribeTabla(opcion);
+	}
+	
+   }while(opcion !=4);
+
+system ("pause");
+return 0;
+	
+}
